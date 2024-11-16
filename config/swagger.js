@@ -1,20 +1,23 @@
 const swaggerJSDoc = require('swagger-jsdoc');
 
-// Defina a configuração básica do Swagger
 const options = {
   definition: {
-    openapi: '3.0.0', // Versão da especificação OpenAPI
+    openapi: '3.0.0',
     info: {
       title: 'Catálogo de Filmes API',
       version: '1.0.0',
-      description: 'Uma API simples para gerenciar filmes, notas, comentários e recomendações.',
+      description: 'Uma API para gerenciar filmes, notas, comentários e usuários.',
     },
+    servers: [
+      {
+        url: 'http://localhost:3000', // Atualize para o URL base da sua API
+        description: 'Servidor local',
+      },
+    ],
   },
-  // Caminho onde as rotas estão localizadas para extrair informações do JSDoc
-  apis: ['./routes/*.js'], // Defina o caminho para as suas rotas
+  apis: ['./routes/*.js'], // Certifique-se de que as rotas estão sendo referenciadas corretamente
 };
 
-// Gerar o Swagger
 const swaggerSpec = swaggerJSDoc(options);
 
 module.exports = swaggerSpec;

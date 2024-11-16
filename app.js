@@ -1,16 +1,23 @@
-const express = require('express');
-const app = express();
-const port = 3000;
-const swaggerUi = require('swagger-ui-express');
-const swaggerSpec = require('./config/swagger'); // Importa a configuração do Swagger
+const express = require('express'); // Importa o Express
+const swaggerUi = require('swagger-ui-express'); // Importa o Swagger
+const swaggerSpec = require('./config/swagger'); // Configuração do Swagger
 
-// Configuração do Swagger UI para exibir a documentação
+const app = express(); // Inicializa o Express
+
+// Middleware para aceitar JSON no corpo das requisições
+app.use(express.json());
+
+// Rotas (adicione as suas rotas aqui)
+const filmRoutes = require('./routes/filmRoutes');
+app.use('/films', filmRoutes);
+
+// Configuração do Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.get('/', (req, res) => {
-  res.send('API is working!');
-});
+// Porta do servidor
+const port = 3000;
 
+// Inicia o servidor
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Servidor rodando em http://localhost:${port}`);
 });

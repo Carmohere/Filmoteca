@@ -28,7 +28,7 @@ exports.getFilm = async (req, res) => {
     if (film) {
       res.json(film);
     } else {
-      res.status(404).json({ message: 'Film not found' });
+      res.status(404).json({ message: 'Filme não encontrado' });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -48,7 +48,7 @@ exports.updateFilm = async (req, res) => {
       await film.save();
       res.json(film);
     } else {
-      res.status(404).json({ message: 'Film not found' });
+      res.status(404).json({ message: 'Filme não encontrado' });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -63,7 +63,7 @@ exports.deleteFilm = async (req, res) => {
       await film.destroy();
       res.status(204).send();
     } else {
-      res.status(404).json({ message: 'Film not found' });
+      res.status(404).json({ message: 'Filme não encontrado' });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
