@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const filmController = require('../controllers/filmController');
+const authenticate = require('../middleware/authMiddleware'); // Importa o middleware de autenticação
 
 /**
  * @swagger
@@ -29,7 +30,7 @@ const filmController = require('../controllers/filmController');
  *       500:
  *         description: "Erro interno"
  */
-router.get('/', filmController.getFilms);
+router.get('/', filmController.getFilms); // Rota pública para listar filmes
 
 /**
  * @swagger
@@ -65,7 +66,7 @@ router.get('/', filmController.getFilms);
  *       500:
  *         description: "Erro interno"
  */
-router.get('/:id', filmController.getFilm);
+router.get('/:id', filmController.getFilm); // Rota pública para obter um filme pelo ID
 
 /**
  * @swagger
@@ -109,7 +110,7 @@ router.get('/:id', filmController.getFilm);
  *       500:
  *         description: "Erro interno"
  */
-router.post('/', filmController.createFilm);
+router.post('/', authenticate, filmController.createFilm); // Rota protegida para criar filme
 
 /**
  * @swagger
@@ -149,7 +150,7 @@ router.post('/', filmController.createFilm);
  *       500:
  *         description: "Erro interno"
  */
-router.put('/:id', filmController.updateFilm);
+router.put('/:id', authenticate, filmController.updateFilm); // Rota protegida para atualizar filme
 
 /**
  * @swagger
@@ -172,6 +173,6 @@ router.put('/:id', filmController.updateFilm);
  *       500:
  *         description: "Erro interno"
  */
-router.delete('/:id', filmController.deleteFilm);
+router.delete('/:id', authenticate, filmController.deleteFilm); // Rota protegida para deletar filme
 
 module.exports = router;
