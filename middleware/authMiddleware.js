@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'sua_chave_secreta_aqui';
 
 const authenticate = (req, res, next) => {
-  const token = req.header('Authorization')?.split(' ')[1]; // Formato: "Bearer TOKEN"
+  const token = req.header('Authorization')?.split(' ')[1];
 
   if (!token) {
     return res.status(401).json({ message: 'Acesso negado, token ausente' });
@@ -10,7 +10,7 @@ const authenticate = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = decoded; // Anexa os dados do usuário ao req
+    req.user = decoded; 
     next();
   } catch (error) {
     res.status(401).json({ message: 'Token inválido' });

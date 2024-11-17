@@ -10,7 +10,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:3000', // Atualize para o seu URL base
+        url: 'http://localhost:3000', // Atualizar para um URL base
         description: 'Servidor local',
       },
     ],
@@ -29,7 +29,7 @@ const options = {
       },
     ],
   },
-  apis: ['./routes/*.js'], // Certifique-se de que suas rotas estão sendo referenciadas corretamente
+  apis: ['./routes/*.js'], // Verifica todos os arquivos na pasta routes
 };
 
 const swaggerSpec = swaggerJSDoc(options);
