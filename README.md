@@ -61,7 +61,7 @@ Filmoteca/
 - Docker (Opção para execução conteinerizada).
 
 ## Instalação
-1. **Clone o repositório:**
+1. **Clone o repositório**
 
    ```bash
    git clone https://github.com/Carmohere/Filmoteca.git
