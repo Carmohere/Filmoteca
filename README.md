@@ -101,6 +101,46 @@ Filmoteca/
 **Documentação Swagger**
 Acesse http://localhost:3000/api-docs para visualizar e testar os endpoints via Swagger.
 
+## Tutorial de Uso
+1. **Registrar um usuário**
+    - Endpoint: POST /auth/register
+    - Exemplo de Requisição
+        ```bash
+        {
+        "username": "teste123",
+        "password": "teste12345"
+        }
+        ```
+
+2. **Fazer Login**
+    - Endpoint: POST /auth/login
+    - Descrição: Realiza login e retorna um token **JWT**.
+
+    - Exemplo de Requisição
+        ```bash
+        {
+        "username": "teste123",
+        "password": "teste12345"
+        }
+        ```
+
+        Resposta Esperada
+        ```bash
+        {
+        "message": "Login bem-sucedido",
+        "token": "eyJhbGciOiJIUzI1NiIsInR..."
+        }
+        ```
+ **Atenção: Guarde o token retornado. Ele será usado para autorizar requisições protegidas.**
+
+3. **Autorizar no Swagger**
+    - Acesse a documentação Swagger em: http://localhost:3000/api-docs/
+    - Clique no botão "Authorize", localizado no canto superior direito da tela.
+    - No campo de entrada, insira o token JWT recebido ao fazer login.
+    - Clique em "Authorize" para aplicar a autenticação em todos os endpoints protegidos.
+
+Agora, você pode usar os endpoints da API diretamente no Swagger com autenticação habilitada.
+
 ## Endpoints Disponíveis
 ## 1. **Autenticação**
 
