@@ -1,20 +1,20 @@
-# ESTAGIO 1. Imagem base
-FROM node:18
+# Use uma imagem oficial do Node.js como base
+FROM node:16
 
-# ESTAGIO 2. Diretório de trabalho dentro do container
+# Defina o diretório de trabalho no container
 WORKDIR /app
 
-# ESTAGIO 3. Copiar os arquivos do projeto para o container
+# Copie os arquivos package.json e package-lock.json para o container
 COPY package*.json ./
 
-# ESTAGIO 4. Instalar dependências
+# Instale as dependências do projeto
 RUN npm install
 
-# ESTAGIO 5. Copiar o restante dos arquivos para o container
+# Copie todo o código do projeto para o container
 COPY . .
 
-# ESTAGIO 6. Expor a porta em que a aplicação roda
+# Exponha a porta onde o app será executado
 EXPOSE 3000
 
-# ESTAGIO 7. Comando para iniciar a aplicação
+# Comando para rodar o aplicativo
 CMD ["npm", "start"]

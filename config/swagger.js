@@ -4,14 +4,13 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Filmoteca API',
+      title: 'Catálogo de Filmes API',
       version: '1.0.0',
-      description: 'Uma API para gerenciar filmes.',
+      description: 'API para gerenciar filmes e usuários.',
     },
     servers: [
       {
-        url: 'http://localhost:3000', // Atualizar para um URL base
-        description: 'Servidor local',
+        url: 'http://localhost:3000',
       },
     ],
     components: {
@@ -29,7 +28,7 @@ const options = {
       },
     ],
   },
-  apis: ['./routes/*.js'], // Verifica todos os arquivos na pasta routes
+  apis: ['./routes/*.js'],
 };
 
 const swaggerSpec = swaggerJSDoc(options);

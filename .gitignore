@@ -1,1 +1,17 @@
-node_modules
+# Dependências
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Banco de dados SQLite
+*.sqlite
+*.sqlite-journal
+
+# Outros
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

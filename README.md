@@ -1,11 +1,10 @@
 # **Filmoteca API**
 
-O objetivo deste projeto API é fornecer uma interface RESTful para gerenciar um catálogo de filmes. A aplicação permite que os usuários:
-- Registrem e autentiquem-se com segurança.
-- Criem, leiam, atualizem e excluam filmes.
-- Protejam operações sensíveis com autenticação JWT.
-
-Além disso, a API foi projetada com foco em boas práticas de desenvolvimento, incluindo validação de dados, documentação Swagger e conteinerização com Docker.
+O objetivo deste projeto é fornecer uma interface RESTful para gerenciar um catálogo de filmes. A aplicação permite que os usuários:
+- Registrem-se e autentiquem-se com segurança.
+- Realizem operações CRUD (Criar, Ler, Atualizar e Excluir) em filmes.
+- Protejam operações sensíveis por meio de autenticação JWT.
+- Explorem e testem os endpoints usando uma documentação interativa com Swagger.
 
 ---
 
@@ -27,7 +26,7 @@ Além disso, a API foi projetada com foco em boas práticas de desenvolvimento, 
 ```plaintext
 Filmoteca/
 ├── config/
-│   ├── config.js
+│   ├── database.js
 │   └── swagger.js
 ├── controllers/
 │   ├── authController.js
@@ -40,15 +39,17 @@ Filmoteca/
 ├── routes/
 │   ├── authRoutes.js
 │   └── filmRoutes.js
-├── .dockerignore
+├── .gitignore 
 ├── Dockerfile
+├── docker-compose.yml
+├── app.js
 ├── package.json
 └── README.md
 ```
 ---
 ## Descrição dos Componentes
 
-- **config/**: Contém configurações gerais, como conexão com o banco de dados e Swagger.
+- **database/**: Contém configurações gerais, como conexão com o banco de dados e Swagger.
 - **controllers/**: Implementa a lógica de negócios, como autenticação e manipulação de filmes.
 - **middleware/**: Middlewares que interceptam e processam requisições antes de atingir os controladores.
 - **models/**: Define os modelos do banco de dados, incluindo validações e relações.
@@ -75,18 +76,24 @@ Filmoteca/
 	```
 
 3. **Configurar o Banco de Dados**
-    O projeto utiliza SQLite como banco de dados. O arquivo config/config.js já está configurado para uso local. Para criar as tabelas, execute:
+    O projeto utiliza SQLite como banco de dados. O arquivo config/database.js já está configurado para uso local. Para criar as tabelas, execute:
     ``` bash
-    npx sequelize-cli db:migrate
+    npm run migrate
     ```
 
 4. **Executar Localmente**
     ``` bash
     npm start
     ```
-5. **Executar com Docker**
+
+6. **Construa a Imagem do Docker**
      ```bash
-    docker-compose up --build
+    docker build -t filmoteca-api .
+      ```
+
+7. **Execute o Container**
+     ```bash
+    docker run -p 3000:3000 filmoteca-api
       ```
 
 **A API estará disponível em http://localhost:3000.**
